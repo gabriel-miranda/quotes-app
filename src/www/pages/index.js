@@ -1,1 +1,3 @@
-export default () => <div>Quotes app</div>
+import React from 'react';
+
+export default () => <div>Quotes app</div>;
