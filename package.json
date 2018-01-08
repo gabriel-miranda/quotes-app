@@ -5,15 +5,15 @@
   "main": "index.js",
   "repository": "https://github.com/gabriel-miranda/quotes-app.git",
   "author": "gabriel-miranda <gabmirdev@gmail.com>",
-  "license": "No license",
+  "license": "UNLICENSED",
   "dependencies": {
     "next": "^4.2.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0"
   },
   "scripts": {
-    "dev": "cd src/www && next",
-    "build": "cd src/www && next build",
-    "start": "cd src/www && next start"
+    "www-dev": "cd src/www && next",
+    "www-build": "cd src/www && next build",
+    "www-start": "cd src/www && next start"
   }
 }
