@@ -15,5 +15,13 @@
     "www-dev": "cd src/www && next",
     "www-build": "cd src/www && next build",
     "www-start": "cd src/www && next start"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.1.2",
+    "eslint": "^4.15.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.5.1"
   }
 }
