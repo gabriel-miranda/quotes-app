@@ -5,7 +5,7 @@ services:
     build:
       context: .
       dockerfile: docker/Dockerfile.base
-    command: yarn www-dev
+    command: yarn dev
     volumes:
       - .:/home/app/quotes
       - /home/app/quotes/node_modules
