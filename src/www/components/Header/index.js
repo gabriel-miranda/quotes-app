@@ -1,5 +1,6 @@
 import React from 'react';
 import Container from '../Layout/Container';
+import Content from '../Layout/Content';
 
 const QUOTES_LOGO_STYLES = {
   display: 'flex',
@@ -20,18 +21,20 @@ const Header = () => (
   <header className="site-header">
     <nav className="navbar navbar-default">
       <Container>
-        <div className="navbar-header">
-          <div style={QUOTES_LOGO_STYLES}>
-            <img
-              src="/static/logo.png"
-              alt="quotes app logo"
-              style={LOGO_STYLES}
-            />
-            <h1 style={LOGO_TITLE_STYLES}>
-              Quotes app
-            </h1>
+        <Content>
+          <div className="navbar-header">
+            <div style={QUOTES_LOGO_STYLES}>
+              <img
+                src="/static/logo.png"
+                alt="quotes app logo"
+                style={LOGO_STYLES}
+              />
+              <h1 style={LOGO_TITLE_STYLES}>
+                Quotes app
+              </h1>
+            </div>
           </div>
-        </div>
+        </Content>
       </Container>
     </nav>
   </header>
