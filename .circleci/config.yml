@@ -1,0 +1,27 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: node:9.2-slim
+
+    working_directory: /home/app/quotes
+
+    steps:
+      - checkout
+
+      - run:
+          name: Install dependencies
+          command: |
+            yarn
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+
+      - run:
+          name: Run linter
+          command: |
+            yarn lint
+
+
