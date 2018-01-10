@@ -18,16 +18,22 @@
     "www-build": "cd src/www && next build",
     "www-start": "cd src/www && next start",
     "lint": "eslint src",
-    "lint:watch": "esw -w src"
+    "lint:watch": "esw -w src",
+    "jest": "NODE_ENV=test jest"
   },
   "devDependencies": {
     "babel-eslint": "^8.1.2",
     "concurrently": "^3.5.1",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
     "eslint": "^4.15.0",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.5.1",
-    "eslint-watch": "^3.1.3"
+    "eslint-watch": "^3.1.3",
+    "jest": "^22.0.5",
+    "react-addons-test-utils": "^15.6.2",
+    "react-test-renderer": "^16.2.0"
   }
 }

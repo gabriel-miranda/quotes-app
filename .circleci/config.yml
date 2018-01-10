@@ -24,4 +24,9 @@ jobs:
           command: |
             yarn lint
 
+      - run:
+          name: Run jest tests
+          command: |
+            yarn jest
+
 
