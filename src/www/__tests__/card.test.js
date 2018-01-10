@@ -20,18 +20,18 @@ const cardWithoutAuthor = {
 
 describe('Card test with enzyme', () => {
   it('should show authorName correctly', () => {
-    const card = shallow(<Card {...cardWithAuthor}/>);
+    const card = shallow(<Card {...cardWithAuthor} />);
     expect(card.find('em').text()).toEqual(cardWithAuthor.authorName);
   });
   it('should show Anonymous if no author is provided', () => {
-    const card = shallow(<Card {...cardWithoutAuthor}/>);
+    const card = shallow(<Card {...cardWithoutAuthor} />);
     expect(card.find('em').text()).toEqual('Anonymous');
   });
 });
 
 describe('Header test with Snapshot Testing', () => {
   it('should show Card correctly', () => {
-    const component = renderer.create(<Card  {...cardWithAuthor}/>);
+    const component = renderer.create(<Card {...cardWithAuthor} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
