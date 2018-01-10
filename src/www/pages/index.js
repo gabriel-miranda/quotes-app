@@ -1,10 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
-import Header from '../components/Header';
-import CardList from '../components/CardList';
+import Home from '../components/Home';
 
-export default class Home extends React.Component {
+export default class Index extends React.Component {
   static async getInitialProps() {
     let data;
     try {
@@ -21,10 +20,7 @@ export default class Home extends React.Component {
   render() {
     const { data } = this.props;
     return (
-      <div>
-        <Header />
-        <CardList data={data} />
-      </div>
+      <Home data={data} />
     );
   }
 }
