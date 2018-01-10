@@ -1,3 +1,6 @@
 import React from 'react';
+import Header from '../components/Header';
 
-export default () => <div>Quotes app</div>;
+export default () => (
+  <Header />
+);
