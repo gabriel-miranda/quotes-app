@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import Container from '../Layout/Container';
 import Content from '../Layout/Content';
 import Card from '../Card';
-import Alert from '../Alert';
+import ErrorMessage from '../ErrorMessage';
+import NoResults from '../NoResults';
 
 const CardItem = props => <Card key={props.id} {...props} />;
 
@@ -13,8 +14,11 @@ const CardList = ({data, error}) => (
       {data &&
         data.results.map(CardItem)
       }
+      {(!data || !data.results.length) &&
+        <NoResults />
+      }
       {error &&
-        <Alert />
+        <ErrorMessage />
       }
     </Content>
   </Container>

@@ -6,7 +6,7 @@ import renderer from 'react-test-renderer';
 
 import CardList from '../components/CardList';
 import Card from '../components/Card';
-import Alert from '../components/Alert';
+import ErrorMessage from '../components/ErrorMessage';
 
 const data = {
   results: [
@@ -21,13 +21,13 @@ describe('CardList test with enzyme', () => {
   it('should show an error if an error happened', () => {
     const cardList = shallow(<CardList />);
     cardList.setProps({data, error});
-    expect(cardList.contains(<Alert />)).toEqual(true);
+    expect(cardList.contains(<ErrorMessage />)).toEqual(true);
   });
 
   it('should not show an error if no error is provided', () => {
     const cardList = shallow(<CardList />);
     cardList.setProps({data});
-    expect(cardList.contains(<Alert />)).toEqual(false);
+    expect(cardList.contains(<ErrorMessage />)).toEqual(false);
   });
 
   it('should show a card if data is provided', () => {
