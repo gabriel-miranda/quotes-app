@@ -1,0 +1,15 @@
+FROM node:9.2-slim
+
+RUN useradd --user-group --create-home --shell /bin/false app
+ENV HOME=/home/app
+ENV QUOTES_ROOT=$HOME/quotes
+
+ADD package.json $QUOTES_ROOT/package.json
+ADD yarn.lock $QUOTES_ROOT/yarn.lock
+
+RUN chown -R app:app $HOME/*
+
+USER app
+
+WORKDIR $QUOTES_ROOT
+RUN yarn

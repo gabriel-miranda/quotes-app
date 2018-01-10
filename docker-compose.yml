@@ -1,0 +1,13 @@
+version: "2"
+services:
+  www:
+    image: www
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.base
+    command: yarn dev
+    volumes:
+      - .:/home/app/quotes
+      - /home/app/quotes/node_modules
+    ports:
+      - 3000:3000

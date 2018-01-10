@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header test with Snapshot Testing should show Card correctly 1`] = `
+<div
+  className="card-docs"
+  style={
+    Object {
+      "borderRadius": "3px",
+      "margin": "20px 0",
+      "padding": "20px",
+    }
+  }
+>
+  <p>
+    Quote 
+    <strong>
+      #
+      23
+    </strong>
+  </p>
+  <p>
+    "
+    This is a test quote
+    "
+  </p>
+  <p>
+    <strong>
+      -
+      <em>
+        Gabriel
+      </em>
+    </strong>
+  </p>
+</div>
+`;
