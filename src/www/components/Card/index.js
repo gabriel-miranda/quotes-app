@@ -13,8 +13,9 @@ const Card = ({id, text, authorName}) => (
     <p>"{text}"</p>
     <p>
       <strong>
+        -
         <em>
-          - {authorName || 'Anonymous'}
+          {authorName || 'Anonymous'}
         </em>
       </strong>
     </p>
