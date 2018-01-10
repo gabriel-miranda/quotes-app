@@ -1,26 +1,39 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import axios from 'axios';
 import Home from '../components/Home';
+import QuotesApiClient from '../utils/QuotesApiClient';
 
 export default class Index extends React.Component {
-  static async getInitialProps() {
+  static async getInitialProps({req}) {
     let data;
+    let error;
     try {
-      const request = await axios.get('https://auth0-exercise-quotes-api.herokuapp.com/api/quotes');
-      ({ data } = request);
+      const api = new QuotesApiClient(req);
+      data = await api.quotes.get();
     } catch (e) {
       console.error(e);
+      error = e;
     }
-    return { data };
+    return { data, error };
   }
+
   static propTypes = {
-    data: PropTypes.object.isRequired,
+    data: PropTypes.object,
+    error: PropTypes.object,
   };
+
+  static defaultProps = {
+    data: null,
+    error: null,
+  };
+
   render() {
-    const { data } = this.props;
+    const { data, error } = this.props;
     return (
-      <Home data={data} />
+      <Home
+        data={data}
+        error={error}
+      />
     );
   }
 }
