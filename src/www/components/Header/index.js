@@ -2,6 +2,10 @@ import React from 'react';
 import Container from '../Layout/Container';
 import Content from '../Layout/Content';
 
+const HEADER_STYLES = {
+  background: '#fff',
+};
+
 const QUOTES_LOGO_STYLES = {
   display: 'flex',
   alignItems: 'center',
@@ -18,7 +22,7 @@ const LOGO_TITLE_STYLES = {
 };
 
 const Header = () => (
-  <header className="site-header">
+  <header className="site-header" style={HEADER_STYLES}>
     <nav className="navbar navbar-default">
       <Container>
         <Content>

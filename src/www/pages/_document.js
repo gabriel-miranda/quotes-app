@@ -1,6 +1,10 @@
 import React from 'react';
 import Document, { Head, Main, NextScript } from 'next/document';
 
+const BODY_STYLE = {
+  background: '#e3e5e7',
+};
+
 export default class MyDocument extends Document {
   render() {
     return (
@@ -20,7 +24,7 @@ export default class MyDocument extends Document {
             href="https://cdn.auth0.com/styleguide/components/2.0.0/components.min.css"
           />
         </Head>
-        <body>
+        <body style={BODY_STYLE}>
           <Main />
           <NextScript />
         </body>
