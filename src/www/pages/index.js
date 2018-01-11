@@ -43,8 +43,7 @@ export default class Index extends React.Component {
   loadNextPage = async () => {
     try {
       const { page } = this.state.data.pagination;
-      const next = await _api().quotes.get({page: page + 1});
-      this.addNewPage(next);
+      this.addNewPage(await _api().quotes.get({page: page + 1}));
     } catch (e) {
       console.error(e);
     } finally {
