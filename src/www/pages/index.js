@@ -33,7 +33,6 @@ export default class Index extends React.Component {
   state = {
     data: this.props.data,
     error: this.props.error,
-    loading: true,
     fetching: false,
   }
 
@@ -45,23 +44,13 @@ export default class Index extends React.Component {
     try {
       const { data } = this.state;
       const { page } = data.pagination;
-      const _page = await _api().quotes.get({page: page + 1});
-      const results = uniqBy(data.results.concat(_page.results), 'id');
-      this.addNewPage({..._page, results});
+      const next = await _api().quotes.get({page: page + 1});
+      const results = uniqBy(data.results.concat(next.results), 'id');
+      this.setState({data: {...next, results}});
     } catch (e) {
       console.error(e);
+    } finally {
       this.setState({fetching: false});
-    }
-  }
-
-  addNewPage = (data) => {
-    this.setState({data, fetching: false}, this.checkLoading);
-  }
-
-  checkLoading = () => {
-    const { pagination: { page, pageCount } } = this.state.data;
-    if (page === pageCount) {
-      this.setState({loading: false});
     }
   }
 
@@ -70,12 +59,9 @@ export default class Index extends React.Component {
   }
 
   render() {
-    const {
-      data,
-      error,
-      loading,
-      fetching,
-    } = this.state;
+    const { data, error, fetching } = this.state;
+    const { page, pageCount } = data;
+    const loading = page === pageCount;
 
     return (
       <Home
