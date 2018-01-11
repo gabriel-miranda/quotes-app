@@ -1,0 +1,405 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Index test with Snapshot Testing should show Index 1`] = `
+Array [
+  <header
+    className="site-header"
+    style={
+      Object {
+        "background": "#fff",
+      }
+    }
+  >
+    <nav
+      className="navbar navbar-default"
+    >
+      <div
+        className="container"
+      >
+        <div
+          className="row"
+        >
+          <div
+            className="col-md-6 col-md-offset-3"
+          >
+            <div
+              className="navbar-header"
+            >
+              <div
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "display": "flex",
+                  }
+                }
+              >
+                <img
+                  alt="quotes app logo"
+                  src="/static/logo.png"
+                  style={
+                    Object {
+                      "height": "42px",
+                      "margin": "0 1em 0 0",
+                    }
+                  }
+                />
+                <h1
+                  style={
+                    Object {
+                      "fontSize": "25px",
+                      "margin": "0",
+                    }
+                  }
+                >
+                  Quotes app
+                </h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>,
+  <div
+    className="container"
+  >
+    <div
+      className="row"
+    >
+      <div
+        className="col-md-6 col-md-offset-3"
+      >
+        <div
+          className="card-docs"
+          style={
+            Object {
+              "borderRadius": "3px",
+              "margin": "20px 0",
+              "padding": "20px",
+            }
+          }
+        >
+          <p>
+            Quote 
+            <strong>
+              #
+              91
+            </strong>
+          </p>
+          <p>
+            "
+            It takes both sunshine and rain to make a rainbow.
+            "
+          </p>
+          <p>
+            <strong>
+              -
+              <em>
+                Anonymous
+              </em>
+            </strong>
+          </p>
+        </div>
+        <div
+          className="card-docs"
+          style={
+            Object {
+              "borderRadius": "3px",
+              "margin": "20px 0",
+              "padding": "20px",
+            }
+          }
+        >
+          <p>
+            Quote 
+            <strong>
+              #
+              92
+            </strong>
+          </p>
+          <p>
+            "
+            A beautiful thing is never perfect.
+            "
+          </p>
+          <p>
+            <strong>
+              -
+              <em>
+                Anonymous
+              </em>
+            </strong>
+          </p>
+        </div>
+        <div
+          className="card-docs"
+          style={
+            Object {
+              "borderRadius": "3px",
+              "margin": "20px 0",
+              "padding": "20px",
+            }
+          }
+        >
+          <p>
+            Quote 
+            <strong>
+              #
+              37
+            </strong>
+          </p>
+          <p>
+            "
+            From small beginnings come great things.
+            "
+          </p>
+          <p>
+            <strong>
+              -
+              <em>
+                Anonymous
+              </em>
+            </strong>
+          </p>
+        </div>
+        <div
+          className="card-docs"
+          style={
+            Object {
+              "borderRadius": "3px",
+              "margin": "20px 0",
+              "padding": "20px",
+            }
+          }
+        >
+          <p>
+            Quote 
+            <strong>
+              #
+              90
+            </strong>
+          </p>
+          <p>
+            "
+            The day is already blessed, find peace within it.
+            "
+          </p>
+          <p>
+            <strong>
+              -
+              <em>
+                Anonymous
+              </em>
+            </strong>
+          </p>
+        </div>
+        <div
+          className="card-docs"
+          style={
+            Object {
+              "borderRadius": "3px",
+              "margin": "20px 0",
+              "padding": "20px",
+            }
+          }
+        >
+          <p>
+            Quote 
+            <strong>
+              #
+              16
+            </strong>
+          </p>
+          <p>
+            "
+            Today is the tomorrow we worried about yesterday.
+            "
+          </p>
+          <p>
+            <strong>
+              -
+              <em>
+                Anonymous
+              </em>
+            </strong>
+          </p>
+        </div>
+        <div
+          className="card-docs"
+          style={
+            Object {
+              "borderRadius": "3px",
+              "margin": "20px 0",
+              "padding": "20px",
+            }
+          }
+        >
+          <p>
+            Quote 
+            <strong>
+              #
+              18
+            </strong>
+          </p>
+          <p>
+            "
+            Every man dies. Not every man really lives.
+            "
+          </p>
+          <p>
+            <strong>
+              -
+              <em>
+                Anonymous
+              </em>
+            </strong>
+          </p>
+        </div>
+        <div
+          className="card-docs"
+          style={
+            Object {
+              "borderRadius": "3px",
+              "margin": "20px 0",
+              "padding": "20px",
+            }
+          }
+        >
+          <p>
+            Quote 
+            <strong>
+              #
+              28
+            </strong>
+          </p>
+          <p>
+            "
+            The day is already blessed, find peace within it.
+            "
+          </p>
+          <p>
+            <strong>
+              -
+              <em>
+                Anonymous
+              </em>
+            </strong>
+          </p>
+        </div>
+        <div
+          className="card-docs"
+          style={
+            Object {
+              "borderRadius": "3px",
+              "margin": "20px 0",
+              "padding": "20px",
+            }
+          }
+        >
+          <p>
+            Quote 
+            <strong>
+              #
+              17
+            </strong>
+          </p>
+          <p>
+            "
+            It's easier to see the mistakes on someone else's paper.
+            "
+          </p>
+          <p>
+            <strong>
+              -
+              <em>
+                Anonymous
+              </em>
+            </strong>
+          </p>
+        </div>
+        <div
+          className="card-docs"
+          style={
+            Object {
+              "borderRadius": "3px",
+              "margin": "20px 0",
+              "padding": "20px",
+            }
+          }
+        >
+          <p>
+            Quote 
+            <strong>
+              #
+              113
+            </strong>
+          </p>
+          <p>
+            "
+            Some pursue happiness, others create it.
+            "
+          </p>
+          <p>
+            <strong>
+              -
+              <em>
+                Anonymous
+              </em>
+            </strong>
+          </p>
+        </div>
+        <div
+          className="card-docs"
+          style={
+            Object {
+              "borderRadius": "3px",
+              "margin": "20px 0",
+              "padding": "20px",
+            }
+          }
+        >
+          <p>
+            Quote 
+            <strong>
+              #
+              107
+            </strong>
+          </p>
+          <p>
+            "
+            Every new day is another chance to change your life.
+            "
+          </p>
+          <p>
+            <strong>
+              -
+              <em>
+                Anonymous
+              </em>
+            </strong>
+          </p>
+        </div>
+        <div
+          className="spinner spinner-lg is-auth0"
+          style={
+            Object {
+              "margin": "0 auto 20px",
+            }
+          }
+        >
+          <div
+            className="circle"
+          />
+        </div>
+        <span
+          style={
+            Object {
+              "fontSize": 0,
+            }
+          }
+        />
+      </div>
+    </div>
+  </div>,
+]
+`;

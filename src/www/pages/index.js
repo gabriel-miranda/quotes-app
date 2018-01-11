@@ -42,16 +42,20 @@ export default class Index extends React.Component {
 
   loadNextPage = async () => {
     try {
-      const { data } = this.state;
-      const { page } = data.pagination;
+      const { page } = this.state.data.pagination;
       const next = await _api().quotes.get({page: page + 1});
-      const results = uniqBy(data.results.concat(next.results), 'id');
-      this.setState({data: {...next, results}});
+      this.addNewPage(next);
     } catch (e) {
       console.error(e);
     } finally {
       this.setState({fetching: false});
     }
+  }
+
+  addNewPage = (next) => {
+    const { data } = this.state;
+    const results = uniqBy(data.results.concat(next.results), 'id');
+    this.setState({data: {...next, results}});
   }
 
   handleLoadNextPage = () => {

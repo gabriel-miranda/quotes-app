@@ -6,5 +6,6 @@ module.exports = {
     '<rootDir>/.next/',
     '<rootDir>/src/www/.next/',
     '<rootDir>/node_modules/',
+    '.*.mock.js',
   ]
 };
