@@ -43,6 +43,25 @@ describe('Index test with enzyme', () => {
     expect(index.update().state().sortBy).toEqual(sortBy);
   });
 
+  it('should change searchQuery when calling handleSearch with parameters', async () => {
+    const index = shallow(<Index data={page1} error={null} />);
+    index.instance().handleSearch('text', 'miracle');
+    expect(index.update().state().searchQuery).toMatchObject({field: 'text', text: 'miracle'});
+  });
+
+  it('should return empty query when calling buildQuery without setting query', async () => {
+    const index = shallow(<Index data={page1} error={null} />);
+    expect(index.instance().buildQuery()).toMatchObject({});
+  });
+
+  it('should reset sorting when making a search', async () => {
+    const index = shallow(<Index data={page1} error={null} />);
+    const sortBy = Object.keys(sorts)[1];
+    index.instance().handleChangeSort(sortBy);
+    index.instance().handleSearch('text', 'miracle');
+    expect(index.update().state().sortBy).toEqual(Object.keys(sorts)[0]);
+  });
+
   it('should empty the data when calling reset', async () => {
     const index = shallow(<Index data={page1} error={testError} />);
     const sortBy = Object.keys(sorts)[1];
