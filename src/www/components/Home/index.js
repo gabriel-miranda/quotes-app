@@ -41,8 +41,12 @@ const Home = ({
   loading,
   loadNextPage,
   changeSort,
+  handleSearch,
 }) => [
-  <Header key="header" />,
+  <Header
+    key="header"
+    handleSearch={handleSearch}
+  />,
   <SortSelect
     changeSort={changeSort}
     key="sort"
@@ -62,6 +66,7 @@ Home.propTypes = {
   loading: PropTypes.bool,
   loadNextPage: PropTypes.func.isRequired,
   changeSort: PropTypes.func.isRequired,
+  handleSearch: PropTypes.func.isRequired,
 };
 
 Home.defaultProps = {
