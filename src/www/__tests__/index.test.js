@@ -49,6 +49,13 @@ describe('Index test with enzyme', () => {
     expect(index.update().state().searchQuery).toMatchObject({field: 'text', text: 'miracle'});
   });
 
+  it('should not change state when calling handleSearch without text', async () => {
+    const index = shallow(<Index data={page1} error={null} />);
+    const prevState = index.update().state();
+    index.instance().handleSearch();
+    expect(index.update().state()).toMatchObject(prevState);
+  });
+
   it('should return empty query when calling buildQuery without setting query', async () => {
     const index = shallow(<Index data={page1} error={null} />);
     expect(index.instance().buildQuery()).toMatchObject({});
