@@ -19,10 +19,10 @@ exports[`Header test with Snapshot Testing should show header title correctly 1`
         className="row"
       >
         <div
-          className="col-md-6 col-md-offset-3"
+          className="col-md-6 col-md-offset-3 clearfix"
         >
           <div
-            className="navbar-header"
+            className="navbar-header pull-left"
           >
             <div
               style={

@@ -28,7 +28,7 @@ const Header = ({handleSearch}) => (
     <nav className="navbar navbar-default">
       <Container>
         <Content>
-          <div className="navbar-header">
+          <div className="navbar-header pull-left">
             <div style={QUOTES_LOGO_STYLES}>
               <img
                 src="/static/logo.png"

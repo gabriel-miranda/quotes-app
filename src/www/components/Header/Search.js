@@ -36,7 +36,7 @@ const OPEN_FORM_STYLES = {
   top: '-20px',
   bottom: '-20px',
   width: 'calc(100% - 30px)',
-  height: 'calc(100% + 40px)',
+  height: 'calc(100% + 38px)',
   background: '#fff',
   padding: '20px 0',
 };
@@ -50,7 +50,8 @@ const RADIO_STYLES = {
 };
 
 const RADIO_LABEL_STYLES = {
-  padding: '10px 15px',
+  padding: '12px 8px',
+  fontSize: '12px',
 };
 
 const RadioButton = ({
@@ -103,7 +104,6 @@ export default class Search extends React.Component {
     e.preventDefault();
     const { searchBy, text } = this.state;
     this.setState({open: false});
-    console.log(searchBy, text);
     this.props.onSubmit(searchBy, text);
   }
 
