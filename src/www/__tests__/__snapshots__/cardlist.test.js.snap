@@ -11,16 +11,16 @@ exports[`CardList test with Snapshot Testing should show cardlist correctly 1`] 
       className="col-md-6 col-md-offset-3"
     >
       <div
-        className="alert alert-warning"
+        className="spinner spinner-lg is-auth0"
         style={
           Object {
-            "margin": "20px 0 0",
+            "margin": "0 auto 20px",
           }
         }
       >
-        <p>
-          No results were found.
-        </p>
+        <div
+          className="circle"
+        />
       </div>
     </div>
   </div>
@@ -51,12 +51,12 @@ exports[`CardList test with Snapshot Testing should show cardlist with props cor
           Quote 
           <strong>
             #
-            1
+            91
           </strong>
         </p>
         <p>
           "
-          Test
+          It takes both sunshine and rain to make a rainbow.
           "
         </p>
         <p>
@@ -82,12 +82,260 @@ exports[`CardList test with Snapshot Testing should show cardlist with props cor
           Quote 
           <strong>
             #
-            2
+            92
           </strong>
         </p>
         <p>
           "
-          Test
+          A beautiful thing is never perfect.
+          "
+        </p>
+        <p>
+          <strong>
+            -
+            <em>
+              Anonymous
+            </em>
+          </strong>
+        </p>
+      </div>
+      <div
+        className="card-docs"
+        style={
+          Object {
+            "borderRadius": "3px",
+            "margin": "20px 0",
+            "padding": "20px",
+          }
+        }
+      >
+        <p>
+          Quote 
+          <strong>
+            #
+            37
+          </strong>
+        </p>
+        <p>
+          "
+          From small beginnings come great things.
+          "
+        </p>
+        <p>
+          <strong>
+            -
+            <em>
+              Anonymous
+            </em>
+          </strong>
+        </p>
+      </div>
+      <div
+        className="card-docs"
+        style={
+          Object {
+            "borderRadius": "3px",
+            "margin": "20px 0",
+            "padding": "20px",
+          }
+        }
+      >
+        <p>
+          Quote 
+          <strong>
+            #
+            90
+          </strong>
+        </p>
+        <p>
+          "
+          The day is already blessed, find peace within it.
+          "
+        </p>
+        <p>
+          <strong>
+            -
+            <em>
+              Anonymous
+            </em>
+          </strong>
+        </p>
+      </div>
+      <div
+        className="card-docs"
+        style={
+          Object {
+            "borderRadius": "3px",
+            "margin": "20px 0",
+            "padding": "20px",
+          }
+        }
+      >
+        <p>
+          Quote 
+          <strong>
+            #
+            16
+          </strong>
+        </p>
+        <p>
+          "
+          Today is the tomorrow we worried about yesterday.
+          "
+        </p>
+        <p>
+          <strong>
+            -
+            <em>
+              Anonymous
+            </em>
+          </strong>
+        </p>
+      </div>
+      <div
+        className="card-docs"
+        style={
+          Object {
+            "borderRadius": "3px",
+            "margin": "20px 0",
+            "padding": "20px",
+          }
+        }
+      >
+        <p>
+          Quote 
+          <strong>
+            #
+            18
+          </strong>
+        </p>
+        <p>
+          "
+          Every man dies. Not every man really lives.
+          "
+        </p>
+        <p>
+          <strong>
+            -
+            <em>
+              Anonymous
+            </em>
+          </strong>
+        </p>
+      </div>
+      <div
+        className="card-docs"
+        style={
+          Object {
+            "borderRadius": "3px",
+            "margin": "20px 0",
+            "padding": "20px",
+          }
+        }
+      >
+        <p>
+          Quote 
+          <strong>
+            #
+            28
+          </strong>
+        </p>
+        <p>
+          "
+          The day is already blessed, find peace within it.
+          "
+        </p>
+        <p>
+          <strong>
+            -
+            <em>
+              Anonymous
+            </em>
+          </strong>
+        </p>
+      </div>
+      <div
+        className="card-docs"
+        style={
+          Object {
+            "borderRadius": "3px",
+            "margin": "20px 0",
+            "padding": "20px",
+          }
+        }
+      >
+        <p>
+          Quote 
+          <strong>
+            #
+            17
+          </strong>
+        </p>
+        <p>
+          "
+          It's easier to see the mistakes on someone else's paper.
+          "
+        </p>
+        <p>
+          <strong>
+            -
+            <em>
+              Anonymous
+            </em>
+          </strong>
+        </p>
+      </div>
+      <div
+        className="card-docs"
+        style={
+          Object {
+            "borderRadius": "3px",
+            "margin": "20px 0",
+            "padding": "20px",
+          }
+        }
+      >
+        <p>
+          Quote 
+          <strong>
+            #
+            113
+          </strong>
+        </p>
+        <p>
+          "
+          Some pursue happiness, others create it.
+          "
+        </p>
+        <p>
+          <strong>
+            -
+            <em>
+              Anonymous
+            </em>
+          </strong>
+        </p>
+      </div>
+      <div
+        className="card-docs"
+        style={
+          Object {
+            "borderRadius": "3px",
+            "margin": "20px 0",
+            "padding": "20px",
+          }
+        }
+      >
+        <p>
+          Quote 
+          <strong>
+            #
+            107
+          </strong>
+        </p>
+        <p>
+          "
+          Every new day is another chance to change your life.
           "
         </p>
         <p>
@@ -111,6 +359,25 @@ exports[`CardList test with Snapshot Testing should show cardlist with props cor
           Something went wrong. Please try again in a few moments.
         </p>
       </div>
+      <div
+        className="spinner spinner-lg is-auth0"
+        style={
+          Object {
+            "margin": "0 auto 20px",
+          }
+        }
+      >
+        <div
+          className="circle"
+        />
+      </div>
+      <span
+        style={
+          Object {
+            "fontSize": 0,
+          }
+        }
+      />
     </div>
   </div>
 </div>
