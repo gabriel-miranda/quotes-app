@@ -9,6 +9,8 @@ import Index from '../pages/index';
 import page1 from './__mocks__/page1.mock';
 import page2 from './__mocks__/page2.mock';
 
+import sorts from '../utils/sorts';
+
 const testError = new Error('Test error');
 
 describe('Index test with enzyme', () => {
@@ -32,6 +34,20 @@ describe('Index test with enzyme', () => {
   it('should load error in state if an error happend', async () => {
     const index = shallow(<Index data={page1} error={testError} />);
     expect(index.update().state().error).toEqual(testError);
+  });
+
+  it('should change sort when calling reset with a sortBy', async () => {
+    const index = shallow(<Index data={page1} error={testError} />);
+    const sortBy = Object.keys(sorts)[1];
+    index.instance().reset(sortBy);
+    expect(index.update().state().sortBy).toEqual(sortBy);
+  });
+
+  it('should empty the data when calling reset', async () => {
+    const index = shallow(<Index data={page1} error={testError} />);
+    const sortBy = Object.keys(sorts)[1];
+    index.instance().reset(sortBy);
+    expect(index.update().state().data).toEqual(null);
   });
 });
 
