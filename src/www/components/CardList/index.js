@@ -8,12 +8,20 @@ import ErrorMessage from '../ErrorMessage';
 import NoResults from '../NoResults';
 import Spinner from '../Spinner';
 
-const isLoading = data => (
-  !data || !data.pagination || data.pagination.page !== data.pagination.pageCount
+const isLastPage = data => (
+  data.pagination.page !== data.pagination.pageCount
+);
+
+const showSpinner = data => (
+  !data || isLastPage(data)
+);
+
+const canLoadMoreData = data => (
+  data && isLastPage(data)
 );
 
 const haveNoResults = data => (
-  !isLoading(data) && !data.results.length
+  !showSpinner(data) && !data.results.length
 );
 
 const CardItem = props => <Card key={props.id} {...props} />;
@@ -21,7 +29,6 @@ const CardItem = props => <Card key={props.id} {...props} />;
 const CardList = ({
   data,
   error,
-  fetching,
   loadNextPage,
 }) => (
   <Container>
@@ -35,10 +42,10 @@ const CardList = ({
       {error &&
         <ErrorMessage />
       }
-      {isLoading(data) &&
+      {showSpinner(data) &&
         <Spinner />
       }
-      {(!fetching && isLoading(data)) &&
+      {canLoadMoreData(data) &&
         <Waypoint
           key="quotes"
           onEnter={loadNextPage}
@@ -55,14 +62,12 @@ CardItem.propTypes = {
 CardList.propTypes = {
   data: PropTypes.object,
   error: PropTypes.object,
-  fetching: PropTypes.bool,
   loadNextPage: PropTypes.func.isRequired,
 };
 
 CardList.defaultProps = {
   data: null,
   error: null,
-  fetching: true,
 };
 
 export default CardList;

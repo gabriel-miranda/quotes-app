@@ -39,7 +39,6 @@ const Home = ({
   data,
   error,
   loading,
-  fetching,
   loadNextPage,
   changeSort,
 }) => [
@@ -53,7 +52,6 @@ const Home = ({
     key="cardlist"
     error={error}
     loading={loading}
-    fetching={fetching}
     loadNextPage={loadNextPage}
   />,
 ];
@@ -62,7 +60,6 @@ Home.propTypes = {
   data: PropTypes.object,
   error: PropTypes.object,
   loading: PropTypes.bool,
-  fetching: PropTypes.bool,
   loadNextPage: PropTypes.func.isRequired,
   changeSort: PropTypes.func.isRequired,
 };
@@ -71,7 +68,6 @@ Home.defaultProps = {
   data: null,
   error: null,
   loading: false,
-  fetching: true,
 };
 
 export default Home;

@@ -34,20 +34,7 @@ export default class Index extends React.Component {
   state = {
     data: this.props.data,
     error: this.props.error,
-    fetching: false,
     sortBy: sorts[0],
-  }
-
-  handleFetchingState = (cb) => {
-    this.setState({fetching: true}, async () => {
-      try {
-        await cb();
-      } catch (e) {
-        console.error(e);
-      } finally {
-        this.setState({fetching: false});
-      }
-    });
   }
 
   loadNextPage = async () => {
@@ -62,36 +49,26 @@ export default class Index extends React.Component {
     this.setState({data: {...next, results}});
   }
 
-  reset = async () => {
-    const { sortBy } = this.state;
-    const data = await _api().quotes.get({sortBy});
-    this.setState({data});
-  }
-
-  handleLoadNextPage = () => {
-    this.handleFetchingState(this.loadNextPage);
-  }
-
-  handleChangeSort = (e) => {
-    const { data } = this.state;
-    const sortBy = e.target.value;
-    this.setState({sortBy, data: {...data, results: []}}, () => {
-      this.handleFetchingState(this.reset);
+  reset = async (sortBy) => {
+    this.setState({sortBy, data: null}, async () => {
+      const data = await _api().quotes.get({sortBy});
+      this.setState({data});
     });
   }
 
+  handleChangeSort = (e) => {
+    const sortBy = e.target.value;
+    this.reset(sortBy);
+  }
+
   render() {
-    const { data, error, fetching } = this.state;
-    const { page, pageCount } = data;
-    const loading = page === pageCount;
+    const { data, error } = this.state;
 
     return (
       <Home
         data={data}
         error={error}
-        loading={loading}
-        fetching={fetching}
-        loadNextPage={this.handleLoadNextPage}
+        loadNextPage={this.loadNextPage}
         changeSort={this.handleChangeSort}
       />
     );
