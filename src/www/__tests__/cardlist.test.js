@@ -8,31 +8,23 @@ import CardList from '../components/CardList';
 import Card from '../components/Card';
 import ErrorMessage from '../components/ErrorMessage';
 
-const data = {
-  results: [
-    {id: 1, text: 'Test', authorName: ''},
-    {id: 2, text: 'Test', authorName: ''},
-  ],
-};
+import page1 from './__mocks__/page1.mock';
 
 const error = new Error('Test error');
 
 describe('CardList test with enzyme', () => {
   it('should show an error if an error happened', () => {
-    const cardList = shallow(<CardList />);
-    cardList.setProps({data, error});
+    const cardList = shallow(<CardList data={page1} error={error} />);
     expect(cardList.contains(<ErrorMessage />)).toEqual(true);
   });
 
   it('should not show an error if no error is provided', () => {
-    const cardList = shallow(<CardList />);
-    cardList.setProps({data});
+    const cardList = shallow(<CardList data={page1} />);
     expect(cardList.contains(<ErrorMessage />)).toEqual(false);
   });
 
   it('should show a card if data is provided', () => {
-    const cardList = shallow(<CardList />);
-    cardList.setProps({data});
+    const cardList = shallow(<CardList data={page1} />);
     expect(cardList.find(Card).length).toBeGreaterThan(0);
   });
 });
@@ -45,7 +37,7 @@ describe('CardList test with Snapshot Testing', () => {
   });
 
   it('should show cardlist with props correctly', () => {
-    const component = renderer.create(<CardList data={data} error={error} />);
+    const component = renderer.create(<CardList data={page1} error={error} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
