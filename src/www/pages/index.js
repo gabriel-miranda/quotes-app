@@ -121,8 +121,7 @@ export default class Index extends React.Component {
     });
   }
 
-  handleChangeSort = (e) => {
-    const sortBy = e.target.value;
+  handleChangeSort = (sortBy) => {
     this.setState({sortBy}, () => {
       this.reset('sortBy');
     });

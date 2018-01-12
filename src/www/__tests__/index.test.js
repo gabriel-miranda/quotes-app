@@ -36,10 +36,10 @@ describe('Index test with enzyme', () => {
     expect(index.update().state().error).toEqual(testError);
   });
 
-  it('should change sort when calling reset with a sortBy', async () => {
+  it('should change sort when calling handleChangeSort with a sortBy', async () => {
     const index = shallow(<Index data={page1} error={testError} />);
     const sortBy = Object.keys(sorts)[1];
-    index.instance().reset(sortBy);
+    index.instance().handleChangeSort(sortBy);
     expect(index.update().state().sortBy).toEqual(sortBy);
   });
 
