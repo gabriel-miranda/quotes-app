@@ -2,38 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Header from '../Header';
 import CardList from '../CardList';
-import sorts from '../../utils/sorts';
-import Container from '../Layout/Container';
-import Content from '../Layout/Content';
-
-const SORT_STYLE = {
-  width: 'auto',
-  margin: '20px 0 0',
-};
-
-const SortOption = value => (
-  <option key={value} value={value}>
-    {sorts[value]}
-  </option>
-);
-
-const SortSelect = ({changeSort}) => (
-  <Container>
-    <Content>
-      <select
-        className="form-control pull-right"
-        onChange={changeSort}
-        style={SORT_STYLE}
-      >
-        {Object.keys(sorts).map(SortOption)}
-      </select>
-    </Content>
-  </Container>
-);
-
-SortSelect.propTypes = {
-  changeSort: PropTypes.func.isRequired,
-};
+import SortSelect from './SortSelect';
 
 const Home = ({
   data,
@@ -41,8 +10,12 @@ const Home = ({
   loading,
   loadNextPage,
   changeSort,
+  handleSearch,
 }) => [
-  <Header key="header" />,
+  <Header
+    key="header"
+    handleSearch={handleSearch}
+  />,
   <SortSelect
     changeSort={changeSort}
     key="sort"
@@ -62,6 +35,7 @@ Home.propTypes = {
   loading: PropTypes.bool,
   loadNextPage: PropTypes.func.isRequired,
   changeSort: PropTypes.func.isRequired,
+  handleSearch: PropTypes.func.isRequired,
 };
 
 Home.defaultProps = {

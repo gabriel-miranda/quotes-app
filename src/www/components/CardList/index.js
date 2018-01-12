@@ -9,15 +9,15 @@ import NoResults from '../NoResults';
 import Spinner from '../Spinner';
 
 const isLastPage = data => (
-  data.pagination.page !== data.pagination.pageCount
+  data.pagination.pageCount <= data.pagination.page
 );
 
 const showSpinner = data => (
-  !data || isLastPage(data)
+  !data || !isLastPage(data)
 );
 
 const canLoadMoreData = data => (
-  data && isLastPage(data)
+  data && !isLastPage(data)
 );
 
 const haveNoResults = data => (

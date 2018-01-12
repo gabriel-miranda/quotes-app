@@ -7,6 +7,8 @@ import sorts from '../utils/sorts';
 
 const _api = req => new QuotesApiClient(req);
 
+const DEFAULT_SORT = Object.keys(sorts)[0];
+
 export default class Index extends React.Component {
   static async getInitialProps({req}) {
     let data;
@@ -34,31 +36,101 @@ export default class Index extends React.Component {
   state = {
     data: this.props.data,
     error: this.props.error,
-    sortBy: sorts[0],
+    sortBy: DEFAULT_SORT,
+    searchQuery: null,
+  }
+
+  buildQuery() {
+    const { searchQuery } = this.state;
+    if (searchQuery) {
+      const { field, text } = searchQuery;
+      return {[field]: text};
+    }
+    return {};
+  }
+
+  buildParams = (key) => {
+    const { sortBy } = this.state;
+    const query = this.buildQuery();
+    switch (key) {
+      case 'searchQuery':
+        return {
+          sortBy: DEFAULT_SORT,
+          ...query,
+        };
+      default:
+        return {
+          sortBy,
+          ...query,
+        };
+    }
+  }
+
+  buildResetState(key) {
+    const state = {
+      data: null,
+      sortBy: DEFAULT_SORT,
+    };
+    switch (key) {
+      case 'sortBy':
+        return {
+          ...state,
+          sortBy: this.state[key],
+        };
+      case 'searchQuery':
+        return {
+          ...state,
+          searchQuery: this.state[key],
+        };
+      default:
+        return state;
+    }
   }
 
   loadNextPage = async () => {
-    const { data, sortBy } = this.state;
+    const { data } = this.state;
     const { page } = data.pagination;
-    this.addNewPage(await _api().quotes.get({page: page + 1, sortBy}));
+    const params = this.buildParams();
+    this.addNewPage(await _api()
+      .quotes
+      .get({
+        page: page + 1,
+        ...params,
+      })
+    );
   }
 
   addNewPage = (next) => {
     const { data } = this.state;
-    const results = uniqBy(data.results.concat(next.results), 'id');
-    this.setState({data: {...next, results}});
+    const results = uniqBy(
+      data.results.concat(next.results),
+      'id',
+    );
+    this.setState({
+      data: {
+        ...next,
+        results,
+      },
+    });
   }
 
-  reset = async (sortBy) => {
-    this.setState({sortBy, data: null}, async () => {
-      const data = await _api().quotes.get({sortBy});
+  reset = (key) => {
+    this.setState(this.buildResetState(key), async () => {
+      const data = await _api().quotes.get(this.buildParams(key));
       this.setState({data});
     });
   }
 
-  handleChangeSort = (e) => {
-    const sortBy = e.target.value;
-    this.reset(sortBy);
+  handleChangeSort = (sortBy) => {
+    this.setState({sortBy}, () => {
+      this.reset('sortBy');
+    });
+  }
+
+  handleSearch = (field, text) => {
+    this.setState({searchQuery: {field, text}}, () => {
+      this.reset('searchQuery');
+    });
   }
 
   render() {
@@ -70,6 +142,7 @@ export default class Index extends React.Component {
         error={error}
         loadNextPage={this.loadNextPage}
         changeSort={this.handleChangeSort}
+        handleSearch={this.handleSearch}
       />
     );
   }

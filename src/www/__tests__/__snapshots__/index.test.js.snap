@@ -55,6 +55,54 @@ Array [
                 </h1>
               </div>
             </div>
+            <form
+              onSubmit={[Function]}
+              style={
+                Object {
+                  "float": "right",
+                }
+              }
+            >
+              <label
+                htmlFor="search"
+                style={
+                  Object {
+                    "float": "right",
+                    "margin": "6px 0",
+                    "position": "relative",
+                  }
+                }
+              >
+                <i
+                  className="icon-budicon-489 icon"
+                  onClick={[Function]}
+                  style={
+                    Object {
+                      "left": "12px",
+                      "position": "absolute",
+                      "top": "6px",
+                    }
+                  }
+                />
+                <input
+                  className="form-control"
+                  name="search"
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  style={
+                    Object {
+                      "background": "#e9eaec",
+                      "border": "none",
+                      "boxShadow": "none",
+                      "height": "35px",
+                      "padding": "8px 19px",
+                      "width": "10px",
+                    }
+                  }
+                  value=""
+                />
+              </label>
+            </form>
           </div>
         </div>
       </div>
