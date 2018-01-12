@@ -11,16 +11,16 @@ exports[`CardList test with Snapshot Testing should show cardlist correctly 1`] 
       className="col-md-6 col-md-offset-3"
     >
       <div
-        className="alert alert-warning"
+        className="spinner spinner-lg is-auth0"
         style={
           Object {
-            "margin": "20px 0 0",
+            "margin": "0 auto 20px",
           }
         }
       >
-        <p>
-          No results were found.
-        </p>
+        <div
+          className="circle"
+        />
       </div>
     </div>
   </div>
@@ -110,6 +110,18 @@ exports[`CardList test with Snapshot Testing should show cardlist with props cor
         <p>
           Something went wrong. Please try again in a few moments.
         </p>
+      </div>
+      <div
+        className="spinner spinner-lg is-auth0"
+        style={
+          Object {
+            "margin": "0 auto 20px",
+          }
+        }
+      >
+        <div
+          className="circle"
+        />
       </div>
     </div>
   </div>

@@ -69,6 +69,49 @@ Array [
       <div
         className="col-md-6 col-md-offset-3"
       >
+        <select
+          className="form-control pull-right"
+          onChange={[Function]}
+          style={
+            Object {
+              "margin": "20px 0 0",
+              "width": "auto",
+            }
+          }
+        >
+          <option
+            value="authorName"
+          >
+            Author A-Z
+          </option>
+          <option
+            value="-authorName"
+          >
+            Author Z-A
+          </option>
+          <option
+            value="text"
+          >
+            Text A-Z
+          </option>
+          <option
+            value="-text"
+          >
+            Text Z-A
+          </option>
+        </select>
+      </div>
+    </div>
+  </div>,
+  <div
+    className="container"
+  >
+    <div
+      className="row"
+    >
+      <div
+        className="col-md-6 col-md-offset-3"
+      >
         <div
           className="card-docs"
           style={

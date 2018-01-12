@@ -19,7 +19,7 @@ describe('Index test with enzyme', () => {
 
   it('should set fetching state when called', async () => {
     const index = shallow(<Index data={page1} error={null} />);
-    index.instance().setFetching();
+    index.instance().handleFetchingState(() => {});
     expect(index.update().state().fetching).toEqual(true);
   });
 

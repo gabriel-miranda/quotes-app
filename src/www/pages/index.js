@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import uniqBy from 'lodash.uniqby';
 import Home from '../components/Home';
 import QuotesApiClient from '../utils/QuotesApiClient';
+import sorts from '../utils/sorts';
 
 const _api = req => new QuotesApiClient(req);
 
@@ -34,21 +35,25 @@ export default class Index extends React.Component {
     data: this.props.data,
     error: this.props.error,
     fetching: false,
+    sortBy: sorts[0],
   }
 
-  setFetching = (cb) => {
-    this.setState({fetching: true}, cb);
+  handleFetchingState = (cb) => {
+    this.setState({fetching: true}, async () => {
+      try {
+        await cb();
+      } catch (e) {
+        console.error(e);
+      } finally {
+        this.setState({fetching: false});
+      }
+    });
   }
 
   loadNextPage = async () => {
-    try {
-      const { page } = this.state.data.pagination;
-      this.addNewPage(await _api().quotes.get({page: page + 1}));
-    } catch (e) {
-      console.error(e);
-    } finally {
-      this.setState({fetching: false});
-    }
+    const { data, sortBy } = this.state;
+    const { page } = data.pagination;
+    this.addNewPage(await _api().quotes.get({page: page + 1, sortBy}));
   }
 
   addNewPage = (next) => {
@@ -57,8 +62,22 @@ export default class Index extends React.Component {
     this.setState({data: {...next, results}});
   }
 
+  reset = async () => {
+    const { sortBy } = this.state;
+    const data = await _api().quotes.get({sortBy});
+    this.setState({data});
+  }
+
   handleLoadNextPage = () => {
-    this.setFetching(this.loadNextPage);
+    this.handleFetchingState(this.loadNextPage);
+  }
+
+  handleChangeSort = (e) => {
+    const { data } = this.state;
+    const sortBy = e.target.value;
+    this.setState({sortBy, data: {...data, results: []}}, () => {
+      this.handleFetchingState(this.reset);
+    });
   }
 
   render() {
@@ -73,6 +92,7 @@ export default class Index extends React.Component {
         loading={loading}
         fetching={fetching}
         loadNextPage={this.handleLoadNextPage}
+        changeSort={this.handleChangeSort}
       />
     );
   }
