@@ -9,10 +9,14 @@ import Header from '../components/Header';
 const dummyFn = () => {};
 
 describe('Header test with enzyme', () => {
-  it('should show header title correctly"', () => {
+  it('should show header title correctly on small and up devices"', () => {
     const header = shallow(<Header handleSearch={dummyFn} />);
+    expect(header.find('h1').find('.hidden-xs').text()).toEqual('Quotes app');
+  });
 
-    expect(header.find('h1').text()).toEqual('Quotes app');
+  it('should show header title correctly on extra small devices"', () => {
+    const header = shallow(<Header handleSearch={dummyFn} />);
+    expect(header.find('h1').find('.hidden-sm').text()).toEqual('QA');
   });
 });
 
