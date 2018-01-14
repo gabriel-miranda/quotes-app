@@ -23,6 +23,17 @@ const LOGO_TITLE_STYLES = {
   fontSize: '25px',
 };
 
+const LOGIN_WRAPPER_STYLE = {
+  padding: '5px',
+  float: 'right',
+};
+
+const LOGIN_BUTTON_STYLE = {
+  fontSize: '11px',
+  color: '#fff',
+  padding: '7px 14px',
+};
+
 const Header = ({handleSearch}) => (
   <header className="site-header" style={HEADER_STYLES}>
     <nav className="navbar navbar-default">
@@ -36,11 +47,24 @@ const Header = ({handleSearch}) => (
                 style={LOGO_STYLES}
               />
               <h1 style={LOGO_TITLE_STYLES}>
-                Quotes app
+                <span className="hidden-xs">
+                  Quotes app
+                </span>
+                <span className="hidden-sm hidden-md hidden-lg">
+                  QA
+                </span>
               </h1>
             </div>
           </div>
           <Search onSubmit={handleSearch} />
+          <div style={LOGIN_WRAPPER_STYLE}>
+            <a
+              className="btn btn-success"
+              style={LOGIN_BUTTON_STYLE}
+            >
+              Login
+            </a>
+          </div>
         </Content>
       </Container>
     </nav>

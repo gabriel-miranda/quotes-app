@@ -36,9 +36,10 @@ const OPEN_FORM_STYLES = {
   top: '-20px',
   bottom: '-20px',
   width: 'calc(100% - 30px)',
-  height: 'calc(100% + 38px)',
+  height: 'calc(100% + 34px)',
   background: '#fff',
   padding: '20px 0',
+  zIndex: '1',
 };
 
 const FORM_STYLES = {
@@ -136,6 +137,7 @@ export default class Search extends React.Component {
             onFocus={this.handleFocus}
             value={this.state.text}
             name="search"
+            placeholder="Search here..."
           />
         </label>
         { open &&
