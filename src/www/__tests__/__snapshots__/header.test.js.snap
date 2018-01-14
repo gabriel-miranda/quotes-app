@@ -19,10 +19,10 @@ exports[`Header test with Snapshot Testing should show header title correctly 1`
         className="row"
       >
         <div
-          className="col-md-6 col-md-offset-3"
+          className="col-md-6 col-md-offset-3 clearfix"
         >
           <div
-            className="navbar-header"
+            className="navbar-header pull-left"
           >
             <div
               style={
@@ -50,7 +50,16 @@ exports[`Header test with Snapshot Testing should show header title correctly 1`
                   }
                 }
               >
-                Quotes app
+                <span
+                  className="hidden-xs"
+                >
+                  Quotes app
+                </span>
+                <span
+                  className="hidden-sm hidden-md hidden-lg"
+                >
+                  QA
+                </span>
               </h1>
             </div>
           </div>
@@ -88,6 +97,7 @@ exports[`Header test with Snapshot Testing should show header title correctly 1`
                 name="search"
                 onChange={[Function]}
                 onFocus={[Function]}
+                placeholder="Search here..."
                 style={
                   Object {
                     "background": "#e9eaec",
@@ -102,6 +112,27 @@ exports[`Header test with Snapshot Testing should show header title correctly 1`
               />
             </label>
           </form>
+          <div
+            style={
+              Object {
+                "float": "right",
+                "padding": "5px",
+              }
+            }
+          >
+            <a
+              className="btn btn-success"
+              style={
+                Object {
+                  "color": "#fff",
+                  "fontSize": "11px",
+                  "padding": "7px 14px",
+                }
+              }
+            >
+              Login
+            </a>
+          </div>
         </div>
       </div>
     </div>

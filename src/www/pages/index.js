@@ -128,6 +128,9 @@ export default class Index extends React.Component {
   }
 
   handleSearch = (field, text) => {
+    if (!text) {
+      return;
+    }
     this.setState({searchQuery: {field, text}}, () => {
       this.reset('searchQuery');
     });
