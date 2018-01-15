@@ -25,11 +25,14 @@ Array [
             <div
               className="navbar-header pull-left"
             >
-              <div
+              <a
+                href="/"
+                onClick={[Function]}
                 style={
                   Object {
                     "alignItems": "center",
                     "display": "flex",
+                    "position": "relative",
                   }
                 }
               >
@@ -62,7 +65,7 @@ Array [
                     QA
                   </span>
                 </h1>
-              </div>
+              </a>
             </div>
             <form
               onSubmit={[Function]}
@@ -121,18 +124,19 @@ Array [
                 }
               }
             >
-              <div
-                className="spinner spinner-sm "
+              <a
+                className="btn btn-success"
+                onClick={[Function]}
                 style={
                   Object {
-                    "margin": "9px",
+                    "color": "#fff",
+                    "fontSize": "11px",
+                    "padding": "7px 14px",
                   }
                 }
               >
-                <div
-                  className="circle"
-                />
-              </div>
+                Login
+              </a>
             </div>
           </div>
         </div>

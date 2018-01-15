@@ -21,6 +21,11 @@ const FORM_GROUP_STYLES = {
   flexFlow: 'row wrap',
 };
 
+const DONE_STYLES = {
+  padding: '5px 15px 0',
+  margin: '0',
+};
+
 export default class ProfileContentContainer extends React.Component {
   static propTypes = {
     data: PropTypes.object,
@@ -86,14 +91,21 @@ class ProfileContent extends React.Component {
     data: null,
   };
 
+  state = { done: false, loading: false };
+
   save = async () => {
     try {
+      this.setState({loading: true});
       const { bio, birthdate, favorite_color } = this.props.data; // eslint-disable-line
       await api.update({ bio, birthdate, favorite_color });
       auth.renewToken(async () => {
-        await this.props.updateProfile()
+        await this.props.updateProfile();
+        this.setState({done: true, loading: false}, () => {
+          setTimeout(() => this.setState({done: false}), 2000);
+        });
       });
     } catch (e) {
+      this.setState({loading: false});
       console.error(e);
     }
   }
@@ -119,11 +131,16 @@ class ProfileContent extends React.Component {
               {Object.keys(data).map(this.renderBlock)}
             </div>
             <div
-              className="btn btn-success pull-right"
+              className={`btn btn-success pull-right ${this.state.loading && 'disabled'}`}
               onClick={this.save}
             >
               Save
             </div>
+            {this.state.done &&
+              <p className="pull-right" style={DONE_STYLES}>
+                Done!
+              </p>
+            }
           </div>
         </Content>
       </Container>
