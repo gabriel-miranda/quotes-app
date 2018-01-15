@@ -9,5 +9,28 @@ services:
     volumes:
       - .:/home/app/quotes
       - /home/app/quotes/node_modules
+  api:
+    image: api
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.base
+    command: yarn api-dev
+    volumes:
+      - .:/home/app/quotes
+      - /home/app/quotes/node_modules
+  proxy:
+    image: proxy
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.proxy
+    volumes:
+      - ./nginx/run.sh:/run.sh
+    external_links:
+      - www
+      - api
     ports:
       - 3000:3000
+      - 4000:4000
+    depends_on:
+      - api
+      - www
