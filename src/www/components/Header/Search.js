@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const INPUT_STYLES = {
   background: '#e9eaec',
   border: 'none',
-  padding: '8px 16px 8px 32px',
+  padding: '8px 25px 8px 32px',
   boxShadow: 'none',
   height: '35px',
 };
@@ -55,6 +55,13 @@ const RADIO_LABEL_STYLES = {
   fontSize: '12px',
 };
 
+const CROSS_STYLES = {
+  position: 'absolute',
+  top: '6px',
+  right: '10px',
+  cursor: 'pointer',
+};
+
 const RadioButton = ({
   label,
   value,
@@ -92,8 +99,17 @@ export default class Search extends React.Component {
     searchBy: 'authorName',
   };
 
+  setRef = (ref) => {
+    this._input = ref;
+  }
+
   handleFocus = () => {
     this.setState({open: true});
+  }
+
+  handleBlur = () => {
+    this._input.blur();
+    this.setState({open: false});
   }
 
   handleOnChange = (e) => {
@@ -104,7 +120,7 @@ export default class Search extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault();
     const { searchBy, text } = this.state;
-    this.setState({open: false});
+    this.handleBlur();
     this.props.onSubmit(searchBy, text);
   }
 
@@ -130,6 +146,13 @@ export default class Search extends React.Component {
             style={ICON_STYLES}
             onClick={this.handleFocus}
           />
+          {open &&
+            <i
+              className="icon-budicon-471 icon"
+              style={CROSS_STYLES}
+              onClick={this.handleBlur}
+            />
+          }
           <input
             className="form-control"
             style={open ? INPUT_STYLES : CLOSED_STYLES}
@@ -138,6 +161,7 @@ export default class Search extends React.Component {
             value={this.state.text}
             name="search"
             placeholder="Search here..."
+            ref={this.setRef}
           />
         </label>
         { open &&
