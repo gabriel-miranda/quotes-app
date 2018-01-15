@@ -120,18 +120,18 @@ exports[`Header test with Snapshot Testing should show header title correctly 1`
               }
             }
           >
-            <a
-              className="btn btn-success"
+            <div
+              className="spinner spinner-sm "
               style={
                 Object {
-                  "color": "#fff",
-                  "fontSize": "11px",
-                  "padding": "7px 14px",
+                  "margin": "9px",
                 }
               }
             >
-              Login
-            </a>
+              <div
+                className="circle"
+              />
+            </div>
           </div>
         </div>
       </div>
