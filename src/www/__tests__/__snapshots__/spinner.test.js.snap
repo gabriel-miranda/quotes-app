@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Spinner test with Snapshot Testing should show Card correctly 1`] = `
+<div
+  className="spinner spinner-lg is-auth0"
+  style={
+    Object {
+      "margin": "0 auto 20px",
+    }
+  }
+>
+  <div
+    className="circle"
+  />
+</div>
+`;

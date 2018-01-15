@@ -24,11 +24,14 @@ exports[`Header test with Snapshot Testing should show header title correctly 1`
           <div
             className="navbar-header pull-left"
           >
-            <div
+            <a
+              href="/"
+              onClick={[Function]}
               style={
                 Object {
                   "alignItems": "center",
                   "display": "flex",
+                  "position": "relative",
                 }
               }
             >
@@ -61,7 +64,7 @@ exports[`Header test with Snapshot Testing should show header title correctly 1`
                   QA
                 </span>
               </h1>
-            </div>
+            </a>
           </div>
           <form
             onSubmit={[Function]}
@@ -122,6 +125,7 @@ exports[`Header test with Snapshot Testing should show header title correctly 1`
           >
             <a
               className="btn btn-success"
+              onClick={[Function]}
               style={
                 Object {
                   "color": "#fff",

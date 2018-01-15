@@ -25,11 +25,14 @@ Array [
             <div
               className="navbar-header pull-left"
             >
-              <div
+              <a
+                href="/"
+                onClick={[Function]}
                 style={
                   Object {
                     "alignItems": "center",
                     "display": "flex",
+                    "position": "relative",
                   }
                 }
               >
@@ -62,7 +65,7 @@ Array [
                     QA
                   </span>
                 </h1>
-              </div>
+              </a>
             </div>
             <form
               onSubmit={[Function]}
@@ -123,6 +126,7 @@ Array [
             >
               <a
                 className="btn btn-success"
+                onClick={[Function]}
                 style={
                   Object {
                     "color": "#fff",

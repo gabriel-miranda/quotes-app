@@ -5,8 +5,15 @@ const SPINNER_STYLE = {
   margin: '0 auto 20px',
 };
 
-const Spinner = ({size}) => (
-  <div className="spinner spinner-lg is-auth0" style={SPINNER_STYLE}>
+const SPINNER_SM_STYLE = {
+  margin: '9px',
+};
+
+const Spinner = ({size, auth0}) => (
+  <div
+    className={`spinner spinner-${size} ${auth0 ? 'is-auth0' : ''}`}
+    style={size === 'sm' ? SPINNER_SM_STYLE : SPINNER_STYLE}
+  >
     <div className="circle" />
   </div>
 );
@@ -18,10 +25,12 @@ Spinner.propTypes = {
     'md',
     'lg',
   ]),
+  auth0: PropTypes.bool,
 };
 
 Spinner.defaultProps = {
   size: 'lg',
+  auth0: true,
 };
 
 export default Spinner;
