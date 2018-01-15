@@ -26,7 +26,7 @@ const FIELD_VALUE_STYLES = {
   verticalAlign: 'top',
 };
 
-const TEXTAREA_STYLEs = {
+const TEXTAREA_STYLES = {
   resize: 'vertical',
 };
 
@@ -40,7 +40,7 @@ const ProfileBlock = ({block}) => {
             className="form-control"
             type="date"
             maxLength="500"
-            style={TEXTAREA_STYLEs}
+            style={TEXTAREA_STYLES}
           >
             {block.value}
           </textarea>
