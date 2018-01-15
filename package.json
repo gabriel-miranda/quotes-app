@@ -25,6 +25,7 @@
   "scripts": {
     "dev": "concurrently \"yarn www-dev\" \"yarn lint:watch\"",
     "www-dev": "cd src/www && node index.js",
+    "www-prod": "cd src/www && NODE_ENV=production node index.js",
     "api-dev": "cd src/api && node index.js",
     "www-build": "cd src/www && next build",
     "www-start": "cd src/www && next start",
