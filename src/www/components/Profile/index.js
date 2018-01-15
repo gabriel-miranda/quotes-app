@@ -14,6 +14,7 @@ const Profile = ({
   />,
   <ProfileContent
     data={data}
+    key="profile"
   />,
 ];
 
