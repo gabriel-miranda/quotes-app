@@ -30,7 +30,7 @@ const TEXTAREA_STYLES = {
   resize: 'vertical',
 };
 
-const ProfileBlock = ({block}) => {
+const ProfileBlock = ({block, handler}) => {
   switch (block.title) {
     case 'bio':
       return (
@@ -41,23 +41,33 @@ const ProfileBlock = ({block}) => {
             type="date"
             maxLength="500"
             style={TEXTAREA_STYLES}
-          >
-            {block.value}
-          </textarea>
+            onChange={handler}
+            defaultValue={block.value}
+          />
         </div>
       );
     case 'birthdate':
       return (
         <div style={FIELD_STYLES}>
           <div style={FIELD_TITLE_STYLES}>{block.title}</div>
-          <input className="form-control" type="date" value={block.value} />
+          <input
+            className="form-control"
+            type="date"
+            defaultValue={block.value}
+            onChange={handler}
+          />
         </div>
       );
     case 'favorite_color':
       return (
         <div style={FIELD_STYLES}>
           <div style={FIELD_TITLE_STYLES}>{block.title}</div>
-          <input className="form-control" type="color" value={block.value} />
+          <input
+            className="form-control"
+            type="color"
+            defaultValue={block.value}
+            onChange={handler}
+          />
         </div>
       );
     default:
@@ -75,6 +85,11 @@ ProfileBlock.propTypes = {
     title: PropTypes.string,
     value: PropTypes.string,
   }).isRequired,
+  handler: PropTypes.func,
+};
+
+ProfileBlock.defaultProps = {
+  handler: () => {},
 };
 
 export default ProfileBlock;
