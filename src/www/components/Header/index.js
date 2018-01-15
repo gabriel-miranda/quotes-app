@@ -1,8 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Spinner from '../Spinner';
 import Container from '../Layout/Container';
 import Content from '../Layout/Content';
 import Search from './Search';
+import Auth from '../../utils/Auth';
+
+const { login, isAuthenticated, logout } = new Auth();
 
 const HEADER_STYLES = {
   background: '#fff',
@@ -58,12 +62,27 @@ const Header = ({handleSearch}) => (
           </div>
           <Search onSubmit={handleSearch} />
           <div style={LOGIN_WRAPPER_STYLE}>
-            <a
-              className="btn btn-success"
-              style={LOGIN_BUTTON_STYLE}
-            >
-              Login
-            </a>
+            {!process.browser &&
+              <Spinner size="sm" auth0={false} />
+            }
+            {process.browser && !isAuthenticated() &&
+              <a
+                className="btn btn-success"
+                style={LOGIN_BUTTON_STYLE}
+                onClick={login}
+              >
+                Login
+              </a>
+            }
+            {process.browser && isAuthenticated() &&
+              <a
+                className="btn btn-success"
+                style={LOGIN_BUTTON_STYLE}
+                onClick={logout}
+              >
+                Logout
+              </a>
+            }
           </div>
         </Content>
       </Container>

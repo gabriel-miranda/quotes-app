@@ -70,3 +70,4 @@ npm-debug.log*
 *-compiled.js.map
 .DS_Store
 .next/
+*auth0-variables.js
