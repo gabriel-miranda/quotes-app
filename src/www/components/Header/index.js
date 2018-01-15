@@ -37,7 +37,7 @@ const LOGIN_BUTTON_STYLE = {
   padding: '7px 14px',
 };
 
-const Header = ({handleSearch}) => (
+const Header = ({handleSearch, profile}) => (
   <header className="site-header" style={HEADER_STYLES}>
     <nav className="navbar navbar-default">
       <Container>
@@ -59,27 +59,29 @@ const Header = ({handleSearch}) => (
               </h1>
             </div>
           </div>
-          <Search onSubmit={handleSearch} />
-          <div style={LOGIN_WRAPPER_STYLE}>
-            {!isAuthenticated() &&
-              <a
-                className="btn btn-success"
-                style={LOGIN_BUTTON_STYLE}
-                onClick={login}
-              >
-                Login
-              </a>
-            }
-            {isAuthenticated() &&
-              <a
-                className="btn btn-success"
-                style={LOGIN_BUTTON_STYLE}
-                onClick={logout}
-              >
-                Logout
-              </a>
-            }
-          </div>
+          {!profile && [
+            <Search onSubmit={handleSearch} />,
+            <div style={LOGIN_WRAPPER_STYLE}>
+              {!isAuthenticated() &&
+                <a
+                  className="btn btn-success"
+                  style={LOGIN_BUTTON_STYLE}
+                  onClick={login}
+                >
+                  Login
+                </a>
+              }
+              {isAuthenticated() &&
+                <a
+                  className="btn btn-success"
+                  style={LOGIN_BUTTON_STYLE}
+                  onClick={logout}
+                >
+                  Logout
+                </a>
+              }
+            </div>,
+          ]}
         </Content>
       </Container>
     </nav>
@@ -87,7 +89,13 @@ const Header = ({handleSearch}) => (
 );
 
 Header.propTypes = {
-  handleSearch: PropTypes.func.isRequired,
+  handleSearch: PropTypes.func,
+  profile: PropTypes.bool,
+};
+
+Header.defaultProps = {
+  handleSearch: null,
+  profile: false,
 };
 
 export default Header;
