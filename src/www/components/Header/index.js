@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Spinner from '../Spinner';
 import Container from '../Layout/Container';
 import Content from '../Layout/Content';
 import Search from './Search';
@@ -62,10 +61,7 @@ const Header = ({handleSearch}) => (
           </div>
           <Search onSubmit={handleSearch} />
           <div style={LOGIN_WRAPPER_STYLE}>
-            {!process.browser &&
-              <Spinner size="sm" auth0={false} />
-            }
-            {process.browser && !isAuthenticated() &&
+            {!isAuthenticated() &&
               <a
                 className="btn btn-success"
                 style={LOGIN_BUTTON_STYLE}
@@ -74,7 +70,7 @@ const Header = ({handleSearch}) => (
                 Login
               </a>
             }
-            {process.browser && isAuthenticated() &&
+            {isAuthenticated() &&
               <a
                 className="btn btn-success"
                 style={LOGIN_BUTTON_STYLE}

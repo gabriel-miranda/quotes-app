@@ -9,16 +9,18 @@
   "dependencies": {
     "auth0-js": "^9.0.2",
     "axios": "^0.17.1",
+    "express": "^4.16.2",
     "lodash.uniqby": "^4.7.0",
     "next": "^4.2.1",
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
+    "react-cookies": "^0.1.0",
     "react-dom": "^16.2.0",
     "react-waypoint": "^8.0.0"
   },
   "scripts": {
     "dev": "concurrently \"yarn www-dev\" \"yarn lint:watch\"",
-    "www-dev": "cd src/www && next",
+    "www-dev": "cd src/www && node index.js",
     "www-build": "cd src/www && next build",
     "www-start": "cd src/www && next start",
     "lint": "eslint src",
