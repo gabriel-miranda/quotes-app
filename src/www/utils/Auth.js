@@ -35,12 +35,14 @@ export default class Auth {
     });
   }
 
-  setSession = (authResult) => {
+  setSession = (authResult, notReplace) => {
     const expiresAt = JSON.stringify((authResult.expiresIn * 1000) + new Date().getTime());
     cookie.save('access_token', authResult.accessToken, DEFAULT_PATH);
     cookie.save('id_token', authResult.idToken, DEFAULT_PATH);
     cookie.save('expires_at', expiresAt, DEFAULT_PATH);
-    Router.replace('/');
+    if (!notReplace) {
+      Router.replace('/');
+    }
   }
 
   logout = () => {
@@ -73,7 +75,7 @@ export default class Auth {
     });
   }
 
-  renewToken = () => {
+  renewToken = (cb) => {
     this.auth0.checkSession({},
       (err, result) => {
         if (err) {
@@ -81,7 +83,10 @@ export default class Auth {
             `Could not get a new token (${err.error}: ${err.error_description}).`
           );
         } else {
-          this.setSession(result);
+          this.setSession(result, process.browser);
+        }
+        if (cb) {
+          cb();
         }
       }
     );

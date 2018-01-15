@@ -4,7 +4,9 @@ import Content from '../Layout/Content';
 import Container from '../Layout/Container';
 import ProfileBlock from './ProfileBlock';
 import MetadataApiClient from '../../utils/MetadataApiClient';
+import Auth from '../../utils/Auth';
 
+const auth = new Auth();
 const api = new MetadataApiClient();
 
 const TAB_CONTENT_STYLES = {
@@ -22,6 +24,7 @@ const FORM_GROUP_STYLES = {
 export default class ProfileContentContainer extends React.Component {
   static propTypes = {
     data: PropTypes.object,
+    updateProfile: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
@@ -31,7 +34,7 @@ export default class ProfileContentContainer extends React.Component {
   state = {
     bio: this.props.data.bio,
     birthdate: this.props.data.birthdate,
-    favorite_color: this.props.data.favorite_color,
+    favorite_color: this.props.data.favorite_color, // eslint-disable-line
   }
 
   getData() {
@@ -42,8 +45,8 @@ export default class ProfileContentContainer extends React.Component {
     return {
       bio: this.handleChangeBio,
       birthdate: this.handleChangeBirthdate,
-      favorite_color: this.handleChangeFavoriteColor,
-    }
+      favorite_color: this.handleChangeFavoriteColor, // eslint-disable-line
+    };
   }
 
   handleChangeBio = (e) => {
@@ -57,8 +60,8 @@ export default class ProfileContentContainer extends React.Component {
   }
 
   handleChangeFavoriteColor = (e) => {
-    const favorite_color = e.target.value;
-    this.setState({favorite_color}); // eslint-disable-line
+    const favorite_color = e.target.value; // eslint-disable-line
+    this.setState({favorite_color});
   }
 
   render() {
@@ -66,6 +69,7 @@ export default class ProfileContentContainer extends React.Component {
       <ProfileContent
         data={this.getData()}
         handlers={this.getHandlers()}
+        updateProfile={this.props.updateProfile}
       />
     );
   }
@@ -75,10 +79,24 @@ class ProfileContent extends React.Component {
   static propTypes = {
     data: PropTypes.object,
     handlers: PropTypes.object.isRequired,
+    updateProfile: PropTypes.func.isRequired,
   };
+
   static defaultProps = {
     data: null,
   };
+
+  save = async () => {
+    try {
+      const { bio, birthdate, favorite_color } = this.props.data; // eslint-disable-line
+      await api.update({ bio, birthdate, favorite_color });
+      auth.renewToken(async () => {
+        await this.props.updateProfile()
+      });
+    } catch (e) {
+      console.error(e);
+    }
+  }
 
   renderBlock = (title) => {
     const { data, handlers } = this.props;
@@ -89,15 +107,6 @@ class ProfileContent extends React.Component {
         key={title}
       />
     );
-  }
-
-  save = async () => {
-    try {
-      const { bio, birthdate, favorite_color } = this.props.data;
-      await api.update({ bio, birthdate, favorite_color });
-    } catch (e) {
-      console.error(e);
-    }
   }
 
   render() {

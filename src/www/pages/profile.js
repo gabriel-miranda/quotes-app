@@ -5,22 +5,21 @@ import promisify from '../utils/promisify';
 import AUTH0_CONFIG from '../utils/auth0-variables';
 import Profile from '../components/Profile';
 
-const auth = new Auth();
+const { userProfile, getProfile, isAuthenticated } = new Auth();
+const getProfileAsync = promisify(getProfile);
 
 const goHome = (res) => {
   res.writeHead(302, { Location: '/' });
   res.end();
 };
 
-const METADATA_KEY = `https://${AUTH0_CONFIG.domain.replace(/\./g, ':')}/user_metadata`;
+export const METADATA_KEY = `https://${AUTH0_CONFIG.domain.replace(/\./g, ':')}/user_metadata`;
 
 export default class ProfileContainer extends React.Component {
   static async getInitialProps({res}) {
     let data;
     let error;
     try {
-      const { userProfile, getProfile, isAuthenticated } = auth;
-      const getProfileAsync = promisify(getProfile);
       if (!isAuthenticated()) {
         goHome(res);
       }
@@ -33,17 +32,19 @@ export default class ProfileContainer extends React.Component {
       console.error(e);
       error = e;
     }
-    return { data, error };
+    return { data, error, updateProfile: getProfileAsync };
   }
 
   static propTypes = {
     data: PropTypes.object,
     error: PropTypes.object,
+    updateProfile: PropTypes.func,
   };
 
   static defaultProps = {
     data: null,
     error: null,
+    updateProfile: getProfileAsync,
   };
 
   getData() {
@@ -71,10 +72,11 @@ export default class ProfileContainer extends React.Component {
   }
 
   render() {
-    const { error } = this.props;
+    const { error, updateProfile } = this.props;
     return (
       <Profile
         data={this.getData()}
+        updateProfile={updateProfile}
         error={error}
       />
     );

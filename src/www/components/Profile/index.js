@@ -6,7 +6,7 @@ import ProfileContent from './ProfileContent';
 const Profile = ({
   data,
   error,
-  loading,
+  updateProfile,
 }) => [
   <Header
     key="header"
@@ -14,6 +14,7 @@ const Profile = ({
   />,
   <ProfileContent
     data={data}
+    updateProfile={updateProfile}
     key="profile"
   />,
 ];
@@ -21,13 +22,12 @@ const Profile = ({
 Profile.propTypes = {
   data: PropTypes.object,
   error: PropTypes.object,
-  loading: PropTypes.bool,
+  updateProfile: PropTypes.func.isRequired,
 };
 
 Profile.defaultProps = {
   data: null,
   error: null,
-  loading: false,
 };
 
 export default Profile;
